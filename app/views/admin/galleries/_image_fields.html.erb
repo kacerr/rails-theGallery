@@ -1,0 +1,15 @@
+<div class="col-sm-3" style="height: 400px; border: 1px solid; float:left">
+	<fieldset>
+	  <%= f.label :filename, "Filename" %><br />
+	  <%= f.text_field :filename %><br />
+	  <!--<%= f.label :path, "Path" %><br />
+	  <%= f.text_field :path %><br />-->
+	  <%= f.label :path, "Image: #{f.object[:path]} " %><br />
+	  <%#= f.object.inspect %>
+	  <%= image_tag "/uploads/gallery_#{f.object[:gallery_id]}/#{f.object[:path]}" %><br />
+
+    <%= f.file_field :path %>
+	  <%= f.check_box :_destroy %>
+	  <%= f.label :_destroy, "Remove Image" %>
+	</fieldset>
+</div>

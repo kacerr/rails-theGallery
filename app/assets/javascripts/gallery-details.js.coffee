@@ -1,0 +1,15 @@
+jQuery ->
+  $(".gallery-image").hover(
+    -> $(this).css({"border" : "2px solid grey"})
+    #.animate({'borderColor': 'grey'}, 500)
+    -> $(this).animate(500).css({"border" : "none"})
+    )
+
+
+  
+jQuery ->
+	$(".fancybox").fancybox({
+		openEffect	: 'none',
+		closeEffect	: 'none'
+	});
+

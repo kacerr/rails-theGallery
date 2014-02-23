@@ -1,0 +1,13 @@
+<%= javascript_include_tag "gallery-details" %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @gallery.name %>
+</p>
+
+<div>
+  <%= raw images_with_no_spaces_between @gallery.images %>
+</div>
+
+<%= link_to 'Back', galleries_list_path %>

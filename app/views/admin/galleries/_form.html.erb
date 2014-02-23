@@ -1,0 +1,36 @@
+<%= form_for(@admin_gallery, :html => {:multipart => true}) do |f| %>
+  <% if @admin_gallery.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_gallery.errors.count, "error") %> prohibited this admin_gallery from being saved:</h2>
+
+      <ul>
+      <% @admin_gallery.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="divider" style="border-top: 1px solid; margin: 10px;"></div>
+  <div>
+    <%= f.fields_for :images do |builder| %>
+      <%= render 'image_fields', f: builder %>
+    <% end %>
+  </div>
+
+
+
+  <div class="clearfix"></div>
+  <div class="actions" >
+    <%= link_to_add_fields "Add Image", f, :images %>
+    <%= f.submit %>
+  </div>
+<% end %>
