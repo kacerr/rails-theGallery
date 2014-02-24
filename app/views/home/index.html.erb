@@ -1,3 +1,10 @@
 <div class="center hero-unit">
-  <h1>Galleries</h1>
+  <h1>This is all we have here. Enjoy!</h1>
+  <% @galleries.each do |gallery| %>
+  	<h3><%= gallery.name %></h3>
+  	<div>
+  		<%= raw images_with_no_spaces_between gallery.images %>
+  	</div>
+  <% end %>
+</div>
 </div>

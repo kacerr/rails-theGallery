@@ -57,7 +57,7 @@ class Admin::GalleriesController < ApplicationController
   def destroy
     @admin_gallery.destroy
     respond_to do |format|
-      format.html { redirect_to admin_galleries_url }
+      format.html { redirect_to galleries_url }
       format.json { head :no_content }
     end
   end

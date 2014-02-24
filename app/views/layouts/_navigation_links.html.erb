@@ -1,11 +1,13 @@
 <%# add navigation links to this file %>
 	<li><a href="/galleries">Galleries</a></li>
 	<li id="fat-menu" class="dropdown">
+		<% if request.fullpath.include? "/admin" %>
 		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 			Admin <b class="caret"></b>
 		</a>
 		<ul class="dropdown-menu">
 			<li><a href="/admin/galleries">Galleries</a></li>
 		</ul>
+		<% end %>
 	</li>
 

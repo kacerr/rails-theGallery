@@ -24,6 +24,7 @@ TheGallery::Application.routes.draw do
 
   get 'galleries' => 'galleries#index', as: :galleries_list
   get 'galleries/:id' => 'galleries#show', as: :view_gallery
+  get '/admin' => 'admin/galleries#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

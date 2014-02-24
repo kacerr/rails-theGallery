@@ -1,4 +1,5 @@
 module GalleriesHelper
+
 	def link_to_add_fields(name, f, association)
     new_object = f.object.send(association).klass.new
     id = new_object.object_id
@@ -12,13 +13,25 @@ module GalleriesHelper
 	def images_with_no_spaces_between(images)
 		out = []
 		images.each do |image|
+			next if image[:path].blank? 
+			# we figure out if images thumbnail exists
+			if File.exist?("#{Rails.root}/public/uploads/gallery_#{image.gallery_id}/thumb_#{image[:path]}")
+			else
+				# if not, we generate it
+				#logger.info "#{Rails.root}/public/uploads/gallery_#{image.gallery_id}/#{image[:path]}"
+				image_to_resize = MiniMagick::Image.open("#{Rails.root}/public/uploads/gallery_#{image.gallery_id}/#{image[:path]}")
+				image_to_resize.resize "100x100"
+				image_to_resize.write  "#{Rails.root}/public/uploads/gallery_#{image.gallery_id}/thumb_#{image[:path]}"
+				#out << image_to_resize.inspect
+			end
+
 			out << <<-EOM
 			<a class=\"fancybox\" rel=\"gallery1\"  
 					href=\"/uploads/gallery_#{image.gallery_id}/#{image[:path]}\" 
 					class=\"gallery-image\" style=\"display: inline; max-width:250px;\" class=\"gallery-image\"
 					title=\"#{image[:path]}\"
 						>
-				<img src=\"/uploads/gallery_#{image.gallery_id}/#{image[:path]}\" class=\"gallery-image\" style=\"display: inline; max-width:250px;\">
+				<img src=\"/uploads/gallery_#{image.gallery_id}/thumb_#{image[:path]}\" class=\"gallery-image\" style=\"display: inline; max-width:250px;\">
 			</a>
 			EOM
 		end

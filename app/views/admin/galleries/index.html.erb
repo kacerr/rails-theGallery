@@ -17,7 +17,7 @@
         <td><%= admin_gallery.name %></td>
         <td><%= admin_gallery.description %></td>
         <td><%= link_to 'Show', admin_gallery %></td>
-        <td><%= link_to 'Edit', edit_admin_gallery_path(admin_gallery) %></td>
+        <td><%= link_to 'Edit', edit_gallery_path(admin_gallery) %></td>
         <td><%= link_to 'Destroy', admin_gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Gallery', new_admin_gallery_path %>
+<%= link_to 'New Gallery', new_gallery_path %>
