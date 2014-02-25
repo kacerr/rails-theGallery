@@ -2,7 +2,7 @@ jQuery ->
   $(".gallery-image").hover(
     -> $(this).css({"border" : "2px solid grey"})
     #.animate({'borderColor': 'grey'}, 500)
-    -> $(this).animate(500).css({"border" : "none"})
+    -> $(this).animate(500).css({"border" : "2px solid white"})
     )
 
 

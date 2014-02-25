@@ -42,3 +42,9 @@ section {
   @extend .row;
   margin-top: 20px;
   }
+
+  // customization
+  img.gallery-image {
+    height: 65px; max-width:250px;
+    border: 2px solid white;
+  }

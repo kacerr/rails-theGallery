@@ -20,7 +20,7 @@ module GalleriesHelper
 				# if not, we generate it
 				#logger.info "#{Rails.root}/public/uploads/gallery_#{image.gallery_id}/#{image[:path]}"
 				image_to_resize = MiniMagick::Image.open("#{Rails.root}/public/uploads/gallery_#{image.gallery_id}/#{image[:path]}")
-				image_to_resize.resize "100x100"
+				image_to_resize.resize "200x200"
 				image_to_resize.write  "#{Rails.root}/public/uploads/gallery_#{image.gallery_id}/thumb_#{image[:path]}"
 				#out << image_to_resize.inspect
 			end
@@ -28,11 +28,8 @@ module GalleriesHelper
 			out << <<-EOM
 			<a class=\"fancybox\" rel=\"gallery1\"  
 					href=\"/uploads/gallery_#{image.gallery_id}/#{image[:path]}\" 
-					class=\"gallery-image\" style=\"display: inline; max-width:250px;\" class=\"gallery-image\"
 					title=\"#{image[:path]}\"
-						>
-				<img src=\"/uploads/gallery_#{image.gallery_id}/thumb_#{image[:path]}\" class=\"gallery-image\" style=\"display: inline; max-width:250px;\">
-			</a>
+						><img src=\"/uploads/gallery_#{image.gallery_id}/thumb_#{image[:path]}\" class=\"gallery-image\" style=\"display: inline;\"></a>
 			EOM
 		end
 		out.join
